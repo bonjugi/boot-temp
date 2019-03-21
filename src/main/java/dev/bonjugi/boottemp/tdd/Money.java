@@ -1,6 +1,6 @@
 package dev.bonjugi.boottemp.tdd;
 
-public class Money {
+public class Money implements Expression {
 
 	/**
 	 * member variables
@@ -45,5 +45,26 @@ public class Money {
 	public boolean equals(Object obj) {
 		Money money = (Money) obj;
 		return amount == money.amount && currency.equals(money.currency());
+	}
+
+	public Expression plus(Money addend) {
+		return new Sum(this,addend);
+	}
+
+	public Money reduce(Bank bank,String to) {
+
+		int rate = bank.rate(currency, to);
+		return new Money(amount / rate, to);
+	}
+
+
+
+
+	@Override
+	public String toString() {
+		return "Money{" +
+				"amount=" + amount +
+				", currency='" + currency + '\'' +
+				'}';
 	}
 }
