@@ -10,7 +10,7 @@ public class Money implements Expression {
 	protected String currency;
 
 
-	public Money times(int multiplier) {
+	public Expression times(int multiplier) {
 		return new Money(amount * multiplier, currency);
 	}
 
@@ -36,7 +36,6 @@ public class Money implements Expression {
 	}
 
 
-
 	public String currency() {
 		return this.currency;
 	}
@@ -47,8 +46,9 @@ public class Money implements Expression {
 		return amount == money.amount && currency.equals(money.currency());
 	}
 
-	public Expression plus(Money addend) {
-		return new Sum(this,addend);
+	@Override
+	public Expression plus(Expression addend) {
+		return new Sum(this, addend);
 	}
 
 	public Money reduce(Bank bank,String to) {
