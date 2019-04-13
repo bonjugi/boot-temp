@@ -1,4 +1,4 @@
-package dev.bonjugi.tddbestudy;
+package dev.bonjugi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
