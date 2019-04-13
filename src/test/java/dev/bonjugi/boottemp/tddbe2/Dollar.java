@@ -1,8 +1,8 @@
-package dev.bonjugi.tddbestudy.tddseason2;
+package dev.bonjugi.boottemp.tddbe2;
 
-public class Dollar {
+public class Dollar extends Money {
 
-    public int amount;
+    private int amount;
 
     public Dollar(int amount) {
         this.amount = amount;

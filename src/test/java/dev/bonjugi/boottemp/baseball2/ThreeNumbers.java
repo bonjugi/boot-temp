@@ -1,4 +1,4 @@
-package dev.bonjugi.tddbestudy.mytdd;
+package dev.bonjugi.boottemp.baseball2;
 
 public class ThreeNumbers {
 

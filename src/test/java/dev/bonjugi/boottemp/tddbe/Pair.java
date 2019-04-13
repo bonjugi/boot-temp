@@ -1,4 +1,4 @@
-package dev.bonjugi.boottemp.tdd;
+package dev.bonjugi.boottemp.tddbe;
 
 import java.util.Objects;
 
