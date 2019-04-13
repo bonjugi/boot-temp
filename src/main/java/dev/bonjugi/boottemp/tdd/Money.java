@@ -1,23 +1,70 @@
 package dev.bonjugi.boottemp.tdd;
 
-public abstract class Money {
+public class Money implements Expression {
 
-	public static Franc franc(int multiplier) {
-		return new Franc(multiplier);
-
-	}
-
-	abstract Money times(int multiplier);
-
+	/**
+	 * member variables
+	 */
 	protected int amount;
 
-	public static Dollar dollar(int amount) {
-		return new Dollar(amount);
+	protected String currency;
+
+
+	public Expression times(int multiplier) {
+		return new Money(amount * multiplier, currency);
+	}
+
+
+
+	/**
+	 * factory method
+	 */
+	public static Money franc(int multiplier) {
+		return new Money(multiplier,"CHF");
+	}
+	public static Money dollar(int amount) {
+		return new Money(amount,"USD");
+	}
+
+
+	/**
+	 * constructor
+	 */
+	public Money(int amount, String currency) {
+		this.amount = amount;
+		this.currency = currency;
+	}
+
+
+	public String currency() {
+		return this.currency;
 	}
 
 
 	public boolean equals(Object obj) {
 		Money money = (Money) obj;
-		return amount == money.amount && getClass().equals(money.getClass());
+		return amount == money.amount && currency.equals(money.currency());
+	}
+
+	@Override
+	public Expression plus(Expression addend) {
+		return new Sum(this, addend);
+	}
+
+	public Money reduce(Bank bank,String to) {
+
+		int rate = bank.rate(currency, to);
+		return new Money(amount / rate, to);
+	}
+
+
+
+
+	@Override
+	public String toString() {
+		return "Money{" +
+				"amount=" + amount +
+				", currency='" + currency + '\'' +
+				'}';
 	}
 }
