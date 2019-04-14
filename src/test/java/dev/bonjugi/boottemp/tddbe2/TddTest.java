@@ -28,6 +28,7 @@ public class TddTest {
         assertFalse(new Dollar(5).equals(new Dollar(6)));
         assertFalse(new Money(5).equals(new Money(6)));
         assertFalse(new Money(5).equals(new Money(6)));
+        assertFalse(new Franc(5).equals(new Dollar(6)));
     }
 
 

@@ -15,6 +15,6 @@ public class Money {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Money money = (Money) o;
-        return amount == money.amount;
+        return amount == money.amount && money.getClass().equals(o.getClass());
     }
 }
