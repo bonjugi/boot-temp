@@ -7,9 +7,11 @@ public class Franc extends Money {
         this.amount = amount;
     }
 
-    public Franc time(int multiplier) {
-        return new Franc(amount * multiplier);
-    }
+	@Override
+	public Money times(int multiplier) {
+		return new Franc(amount * multiplier);
+	}
+
 
     @Override
     public boolean equals(Object o) {
@@ -20,7 +22,7 @@ public class Franc extends Money {
         return amount == money.amount;
     }
 
-    @Override
+	@Override
     public int hashCode() {
         return amount;
     }
