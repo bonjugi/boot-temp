@@ -2,18 +2,16 @@ package dev.bonjugi.boottemp.tddbe2;
 
 public class Franc extends Money {
 
-
-    public Franc(int amount) {
-        this.amount = amount;
+    public Franc(int amount, String currency) {
+    	super(amount,currency);
     }
 
 	@Override
 	public Money times(int multiplier) {
-		return new Franc(amount * multiplier);
+		return Money.franc(amount * multiplier);
 	}
 
-
-    @Override
+	@Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
