@@ -1,16 +1,9 @@
 package dev.bonjugi.boottemp.tddbe2;
 
-public abstract class Money {
+public class Money {
+
     protected int amount;
 	protected String currency;
-
-
-	public Money() {
-    }
-
-    public Money(int i) {
-        amount=i;
-    }
 
 	public static Money dollar(int amount) {
 		return new Dollar(amount,"USD");
@@ -23,23 +16,28 @@ public abstract class Money {
 	@Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
         Money money = (Money) o;
-        return amount == money.amount && money.getClass().equals(o.getClass());
+        return amount == money.amount && currency().equals(money.currency());
     }
 
-
-	public abstract Money times(int multiplier);
+	public Money times(int multiplier){
+		return new Money(amount * multiplier , currency);
+	}
 
 	public String currency() {
 		return this.currency;
 	}
-
 
 	public Money(int amount, String currency) {
 		this.amount = amount;
 		this.currency = currency;
 	}
 
-
+	@Override
+	public String toString() {
+		return "Money{" +
+				"amount=" + amount +
+				", currency='" + currency + '\'' +
+				'}';
+	}
 }
